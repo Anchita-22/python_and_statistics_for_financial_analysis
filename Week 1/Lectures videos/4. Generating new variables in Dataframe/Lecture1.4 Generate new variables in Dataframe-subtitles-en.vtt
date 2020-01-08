@@ -1,0 +1,433 @@
+WEBVTT
+
+1
+00:00:04.660 --> 00:00:08.360
+After learning the basics of DataFrame,
+
+2
+00:00:08.360 --> 00:00:14.100
+we will learn more methods which help us to create new variables.
+
+3
+00:00:14.100 --> 00:00:19.635
+We have learned how to select a subset of data for our DataFrame.
+
+4
+00:00:19.635 --> 00:00:21.740
+We have learned two methods;
+
+5
+00:00:21.740 --> 00:00:25.960
+select by labels and select by position.
+
+6
+00:00:25.960 --> 00:00:29.370
+To create new variables for other columns,
+
+7
+00:00:29.370 --> 00:00:32.980
+we will learn a new method of DataFrame slicing,
+
+8
+00:00:32.980 --> 00:00:34.685
+which is a special one.
+
+9
+00:00:34.685 --> 00:00:38.110
+It is to select particular columns.
+
+10
+00:00:38.110 --> 00:00:42.270
+For example, we want to select column of Close price.
+
+11
+00:00:42.270 --> 00:00:46.045
+To select in such a single column from DataFrame,
+
+12
+00:00:46.045 --> 00:00:51.030
+you can use fb ['Close'].
+
+13
+00:00:51.030 --> 00:00:57.575
+If you want to select multiple columns for example both Open and Close prices,
+
+14
+00:00:57.575 --> 00:01:02.845
+you can use lists of names by putting all names in a square bracket,
+
+15
+00:01:02.845 --> 00:01:09.020
+and give this names list an entry to over 10 multiple columns.
+
+16
+00:01:09.020 --> 00:01:12.780
+If you want to create a new column called
+
+17
+00:01:12.780 --> 00:01:18.070
+Price1 which is Close price of tomorrow, you can do this.
+
+18
+00:01:18.070 --> 00:01:20.850
+The fb now has a new column.
+
+19
+00:01:20.850 --> 00:01:23.730
+What is the right side of this code?
+
+20
+00:01:23.730 --> 00:01:25.775
+Basically,it is Close price,
+
+21
+00:01:25.775 --> 00:01:27.910
+but with shift operator,
+
+22
+00:01:27.910 --> 00:01:34.370
+shift(-1), we move a whole column of Close price one row upward.
+
+23
+00:01:34.370 --> 00:01:37.345
+Then at each row or trading day,
+
+24
+00:01:37.345 --> 00:01:42.970
+the price in the Price1 column is the Close price of tomorrow.
+
+25
+00:01:43.160 --> 00:01:46.975
+Here's a demonstration of a shift(-1).
+
+26
+00:01:46.975 --> 00:01:51.820
+It shifts a whole column upwards by one row.
+
+27
+00:01:53.120 --> 00:01:57.880
+Next, we create a new variable called
+
+28
+00:01:57.880 --> 00:02:04.105
+PriceDiff which is the price change between tomorrow and today,
+
+29
+00:02:04.105 --> 00:02:08.655
+which is a term we will try to predict in topic four.
+
+30
+00:02:08.655 --> 00:02:14.950
+A good thing to work with DataFrame is that we can compute them column-wisely.
+
+31
+00:02:14.950 --> 00:02:19.205
+We do not need to compute a price difference one day by one day.
+
+32
+00:02:19.205 --> 00:02:26.335
+Instead, we can take this job nicely with only one line of code.
+
+33
+00:02:26.335 --> 00:02:29.090
+It is very intuitive and clean.
+
+34
+00:02:29.090 --> 00:02:35.210
+That is why a lot of practitioners like to use Python to pre-process data.
+
+35
+00:02:35.210 --> 00:02:38.380
+We can check the updated DataFrame fb,
+
+36
+00:02:38.380 --> 00:02:42.080
+the new column is generated.
+
+37
+00:02:42.140 --> 00:02:47.260
+Similarly, we can calculate the daily return.
+
+38
+00:02:47.260 --> 00:02:58.195
+We know daily return should be PriceDiff divided by Close, as we can see from the formula.
+
+39
+00:02:58.195 --> 00:03:03.500
+We double check if the new variable is created.
+
+40
+00:03:05.240 --> 00:03:11.340
+Next, we will create a new variable direction.
+
+41
+00:03:11.340 --> 00:03:15.385
+The direction is determined by PriceDiff.
+
+42
+00:03:15.385 --> 00:03:17.975
+If PriceDiff is positive,
+
+43
+00:03:17.975 --> 00:03:22.440
+the direction is up and denoted as one.
+
+44
+00:03:22.440 --> 00:03:26.965
+Otherwise, it's down and denoted as negative one.
+
+45
+00:03:26.965 --> 00:03:33.190
+We cannot use column-wise transformation of any columns to get "direction".
+
+46
+00:03:33.190 --> 00:03:36.855
+Instead, we will use List comprehension.
+
+47
+00:03:36.855 --> 00:03:40.365
+Here's the code for the List comprehension.
+
+48
+00:03:40.365 --> 00:03:43.160
+It looks very complicated.
+
+49
+00:03:43.160 --> 00:03:46.035
+Let us look into the details.
+
+50
+00:03:46.035 --> 00:03:48.890
+Red part of code is condition.
+
+51
+00:03:48.890 --> 00:03:56.490
+It says it will give value 1 for Direction if PriceDiff is positive.
+
+52
+00:03:56.490 --> 00:03:59.385
+Otherwise, it is negative.
+
+53
+00:03:59.385 --> 00:04:07.060
+The yellow part defines the domain in which this operation will be performed.
+
+54
+00:04:07.060 --> 00:04:11.380
+ei is a name for any Index of fb.
+
+55
+00:04:11.380 --> 00:04:14.295
+It means for any index ei,
+
+56
+00:04:14.295 --> 00:04:20.955
+Direction will be valued according to the condition defined in the red region.
+
+57
+00:04:20.955 --> 00:04:24.940
+List comprehension is a very important tool for
+
+58
+00:04:24.940 --> 00:04:29.960
+creation of new variables following very complicated rules.
+
+59
+00:04:29.960 --> 00:04:35.515
+A Moving average is a widely used signal in stock trading,
+
+60
+00:04:35.515 --> 00:04:40.355
+which is loading average price over a defined number of days.
+
+61
+00:04:40.355 --> 00:04:45.800
+Random fluctuations are very common in stock price.
+
+62
+00:04:45.800 --> 00:04:51.525
+Taking an average price in a period can smooth out noise.
+
+63
+00:04:51.525 --> 00:04:54.765
+It is sought to be good to find the trend.
+
+64
+00:04:54.765 --> 00:05:01.525
+For example, we want to calculate the moving average of close price over three days,
+
+65
+00:05:01.525 --> 00:05:05.490
+which is the average of Close price of today,
+
+66
+00:05:05.490 --> 00:05:09.420
+yesterday, and the day before yesterday.
+
+67
+00:05:11.930 --> 00:05:17.515
+Let us take a close look, what is a shift(1).
+
+68
+00:05:17.515 --> 00:05:23.280
+Shift(1) is to shift the whole column downward by one row.
+
+69
+00:05:23.280 --> 00:05:26.365
+Hence, at any given row or day,
+
+70
+00:05:26.365 --> 00:05:31.790
+the shifted Close price in fact is a Close price of yesterday.
+
+71
+00:05:34.360 --> 00:05:36.865
+What is shift(2)?
+
+72
+00:05:36.865 --> 00:05:42.235
+It shifts the column of Close price downward by two rows,
+
+73
+00:05:42.235 --> 00:05:45.455
+which get the Close price two days ago.
+
+74
+00:05:45.455 --> 00:05:51.345
+We found NaN at the top which means Not a Number.
+
+75
+00:05:51.345 --> 00:05:55.350
+Since we do not have data before December 31,
+
+76
+00:05:55.350 --> 00:06:02.980
+we get NaN in the top two rows if we move the columns downward by two rows.
+
+77
+00:06:02.980 --> 00:06:06.180
+If a new variable is created using
+
+78
+00:06:06.180 --> 00:06:12.910
+shift Close price that we also has NaN values at the top two rows.
+
+79
+00:06:16.280 --> 00:06:19.350
+Check the new update fb.
+
+80
+00:06:19.350 --> 00:06:23.185
+Now, it had a new column which is called Average3.
+
+81
+00:06:23.185 --> 00:06:26.630
+In Python, if some valuable data is missing,
+
+82
+00:06:26.630 --> 00:06:29.040
+we call it is missing values.
+
+83
+00:06:29.040 --> 00:06:34.160
+It will also show NaN value if read into DataFrame.
+
+84
+00:06:34.160 --> 00:06:39.285
+DataFrame has very nice methods to handle NaN values.
+
+85
+00:06:39.285 --> 00:06:44.095
+We will discuss more details in the next several topics.
+
+86
+00:06:44.095 --> 00:06:53.095
+In DataFrame, it has building method to compute moving average over any number of days.
+
+87
+00:06:53.095 --> 00:06:58.205
+Here, we create two new columns or variables.
+
+88
+00:06:58.205 --> 00:07:03.735
+MA40 is a moving average Close price over 40 days,
+
+89
+00:07:03.735 --> 00:07:09.385
+and MA200 is a moving average price over 200 days.
+
+90
+00:07:09.385 --> 00:07:16.160
+Rolling is a very nice method to provide us rolling window calculation.
+
+91
+00:07:16.160 --> 00:07:22.665
+We can use this rolling window to calculate mean even sum.
+
+92
+00:07:22.665 --> 00:07:31.625
+Now, let us plot these moving averages and compare them with Close price.
+
+93
+00:07:31.625 --> 00:07:37.665
+We first plot Close price then moving average 40.
+
+94
+00:07:37.665 --> 00:07:41.500
+And finally, moving average 200.
+
+95
+00:07:41.500 --> 00:07:48.210
+You can see those moving average smooth the original Close price.
+
+96
+00:07:48.210 --> 00:07:53.480
+Moving average 40 which is colored as orange is
+
+97
+00:07:53.480 --> 00:07:59.425
+more closely associated with Close price than moving average 200.
+
+98
+00:07:59.425 --> 00:08:04.425
+Hence, we call moving average 40 is a fast signal and
+
+99
+00:08:04.425 --> 00:08:11.345
+MA200 is a slow signal which reflects the price over a long history.
+
+100
+00:08:11.345 --> 00:08:15.300
+If MA40 is above MA200,
+
+101
+00:08:15.300 --> 00:08:19.670
+some traders who we call trend-following traders,
+
+102
+00:08:19.670 --> 00:08:25.590
+they believe the stock price will move upwards for a while.
+
+103
+00:08:25.590 --> 00:08:33.945
+In this video, you have learned how to create new variables such as price difference,
+
+104
+00:08:33.945 --> 00:08:38.330
+daily return, direction, and moving average.
+
+105
+00:08:38.330 --> 00:08:42.680
+We also discussed how to use List comprehension to
+
+106
+00:08:42.680 --> 00:08:47.325
+create new variables following a very complicated rule.
+
+107
+00:08:47.325 --> 00:08:51.590
+In the next video we will build a simple strategy for
+
+108
+00:08:51.590 --> 00:08:58.550
+stock trading based on our discussion about slow and fast signals.

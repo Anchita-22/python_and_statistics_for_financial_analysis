@@ -1,0 +1,285 @@
+WEBVTT
+
+1
+00:00:04.230 --> 00:00:11.075
+In this video, we will present basic attributes and methods of DataFrame,
+
+2
+00:00:11.075 --> 00:00:14.310
+which we will use a lot in this course.
+
+3
+00:00:14.310 --> 00:00:19.005
+Then we will discuss one of the most important skills for beginners,
+
+4
+00:00:19.005 --> 00:00:22.160
+how to select some portion of data.
+
+5
+00:00:22.160 --> 00:00:28.540
+To begin with, let's first take a look at what DataFrame looks like.
+
+6
+00:00:28.540 --> 00:00:32.050
+We can print serveral rows at the top DataFrame,
+
+7
+00:00:32.050 --> 00:00:36.535
+fb which is historical data for Facebook.
+
+8
+00:00:36.535 --> 00:00:39.030
+The method we used is head.
+
+9
+00:00:39.030 --> 00:00:43.135
+It gives us the first five rows of the DataFrame.
+
+10
+00:00:43.135 --> 00:00:44.700
+As you can see,
+
+11
+00:00:44.700 --> 00:00:48.610
+Pandas DataFrame is a tabular structure of data.
+
+12
+00:00:48.610 --> 00:00:51.195
+It has rows and columns.
+
+13
+00:00:51.195 --> 00:00:53.145
+There is an index,
+
+14
+00:00:53.145 --> 00:00:55.990
+which gives a base for each row.
+
+15
+00:00:55.990 --> 00:00:58.760
+There are columns of open,
+
+16
+00:00:58.760 --> 00:01:03.840
+high, low, adjust close, and volume.
+
+17
+00:01:03.840 --> 00:01:08.260
+Open and close are the opening price and the closing price.
+
+18
+00:01:08.260 --> 00:01:12.270
+High and low are the highest in price and the lowest price.
+
+19
+00:01:12.270 --> 00:01:15.685
+Adjust close is a stock closing price,
+
+20
+00:01:15.685 --> 00:01:20.655
+on a given day of trading that has been amended to include
+
+21
+00:01:20.655 --> 00:01:28.130
+any dispution and the corporate actions occurred at anytime before the next day's open.
+
+22
+00:01:28.130 --> 00:01:34.985
+Every data type in Python had its own methods and attributes.
+
+23
+00:01:34.985 --> 00:01:37.505
+As the example of attributes,
+
+24
+00:01:37.505 --> 00:01:40.545
+we can check index like this.
+
+25
+00:01:40.545 --> 00:01:45.665
+They also can get the first index and the last index,
+
+26
+00:01:45.665 --> 00:01:48.890
+so that we can extract information
+
+27
+00:01:48.890 --> 00:01:53.015
+about the starting date and the final date of this data.
+
+28
+00:01:53.015 --> 00:01:57.865
+We can also can get columns by typing fb columns.
+
+29
+00:01:57.865 --> 00:02:02.110
+Another important attribute of a DataFrame is the size.
+
+30
+00:02:02.110 --> 00:02:08.075
+The size of DataFrame can be described by the number of rows and columns.
+
+31
+00:02:08.075 --> 00:02:11.425
+We use shape to get a size.
+
+32
+00:02:11.425 --> 00:02:17.880
+In this course, number rows stands for the number of observations,
+
+33
+00:02:17.880 --> 00:02:23.970
+and the column number represents how many variables in the data.
+
+34
+00:02:28.520 --> 00:02:34.730
+As methods, head and tail are often used to check whether
+
+35
+00:02:34.730 --> 00:02:40.795
+data is correct or to check contents of index and columns.
+
+36
+00:02:40.795 --> 00:02:44.545
+With tail, you can get the last five rows.
+
+37
+00:02:44.545 --> 00:02:48.530
+In fact, you can specify how many rows
+
+38
+00:02:48.530 --> 00:02:53.590
+you want by putting number of rows inside the parentheses.
+
+39
+00:02:53.910 --> 00:02:57.605
+There is another method called describe,
+
+40
+00:02:57.605 --> 00:03:01.485
+which can give you some summary statistics for each column.
+
+41
+00:03:01.485 --> 00:03:07.220
+For example, in this output which is also the format of DataFrame,
+
+42
+00:03:07.220 --> 00:03:14.330
+the first column lists number mean standard deviation etc., for open price.
+
+43
+00:03:18.410 --> 00:03:24.500
+Next, we will discuss selection of data from DataFrame.
+
+44
+00:03:24.500 --> 00:03:28.390
+Sometimes you only need a subset data.
+
+45
+00:03:28.390 --> 00:03:35.565
+For example, select only close price of 2015. How to do that.
+
+46
+00:03:35.565 --> 00:03:38.725
+There are two ways to slice a DataFrame,
+
+47
+00:03:38.725 --> 00:03:43.370
+selection by label and selection by position.
+
+48
+00:03:43.370 --> 00:03:50.325
+For example, if you want the close price on the first day of 2015,
+
+49
+00:03:50.325 --> 00:03:56.265
+you can use a method loc along with labels of index and the column.
+
+50
+00:03:56.265 --> 00:03:59.665
+The first entry is the index label.
+
+51
+00:03:59.665 --> 00:04:03.930
+The second entry of label is a column name.
+
+52
+00:04:05.410 --> 00:04:12.215
+Alternatively, you also can select by position using iloc.
+
+53
+00:04:12.215 --> 00:04:15.520
+The first entry stands for row number.
+
+54
+00:04:15.520 --> 00:04:18.130
+The second is a column number.
+
+55
+00:04:18.130 --> 00:04:21.740
+The position starts with zero.
+
+56
+00:04:23.420 --> 00:04:26.755
+You can select multiple rows.
+
+57
+00:04:26.755 --> 00:04:33.345
+For example, we can get close price for the whole year of 2015.
+
+58
+00:04:33.345 --> 00:04:37.635
+This selects close price from 2015,
+
+59
+00:04:37.635 --> 00:04:42.685
+January 1 to 2015, December 31.
+
+60
+00:04:42.685 --> 00:04:46.985
+We also can select multiple columns.
+
+61
+00:04:46.985 --> 00:04:53.070
+The colon sign in the second entry of iloc means all columns.
+
+62
+00:04:54.530 --> 00:04:58.915
+DataFrame has built in method of plot,
+
+63
+00:04:58.915 --> 00:05:05.060
+which means you can plot data directly without importing matplotlib.
+
+64
+00:05:05.060 --> 00:05:09.350
+There is a method called plot in pandas DataFrame.
+
+65
+00:05:09.350 --> 00:05:14.815
+You can easily visualize the close price with this method.
+
+66
+00:05:14.815 --> 00:05:20.090
+You even can slice close price into different years,
+
+67
+00:05:20.090 --> 00:05:23.280
+and visualize them one by one.
+
+68
+00:05:24.930 --> 00:05:31.310
+In this video, you have learned attributes methods of DataFrame.
+
+69
+00:05:31.310 --> 00:05:34.525
+Please, get familiar with this part,
+
+70
+00:05:34.525 --> 00:05:37.880
+and do some practice in Jupyter Notebook.
+
+71
+00:05:37.880 --> 00:05:44.700
+We will use these skills a lot in our formal analysis of financial data.
